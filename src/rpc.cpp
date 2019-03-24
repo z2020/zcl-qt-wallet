@@ -32,7 +32,7 @@ RPC::RPC(MainWindow* main) {
     // Set up timer to refresh Price
     priceTimer = new QTimer(main);
     QObject::connect(priceTimer, &QTimer::timeout, [=]() {
-        refreshZECPrice();
+        refreshZCLPrice();
     });
     priceTimer->start(Settings::priceRefreshSpeed);  // Every hour
 
@@ -71,14 +71,15 @@ RPC::~RPC() {
     delete conn;
 }
 
-void RPC::setEZcashd(QProcess* p) {
-    ezcashd = p;
+void RPC::setEZClassicd(QProcess* p) {
+    ezclassicd = p;
 
-    if (ezcashd && ui->tabWidget->widget(4) == nullptr) {
-        ui->tabWidget->addTab(main->zcashdtab, "zcashd");
+    if (ezclassicd && ui->tabWidget->widget(4) == nullptr) {
+        ui->tabWidget->addTab(main->zclassicdtab, "zclassicd");
     }
 }
 
+// Called when a connection to zclassicd is available. 
 void RPC::setConnection(Connection* c) {
     if (c == nullptr) return;
 
@@ -87,9 +88,14 @@ void RPC::setConnection(Connection* c) {
 
     ui->statusBar->showMessage("Ready!");
 
-    refreshZECPrice();
-    // Commented for Android beta. 
-    // checkForUpdate();
+    // See if we need to remove the reindex/rescan flags from the zclassic.conf file
+    auto zclassicConfLocation = Settings::getInstance()->getZClassicdConfLocation();
+    Settings::removeFromZClassicConf(zclassicConfLocation, "rescan");
+    Settings::removeFromZClassicConf(zclassicConfLocation, "reindex");
+
+    // Refresh the UI
+    refreshZCLPrice();    
+    checkForUpdate();
 
     // Force update, because this might be coming from a settings update
     // where we need to immediately refresh
@@ -511,7 +517,7 @@ void RPC::refreshReceivedZTrans(QList<QString> zaddrs) {
     );
 } 
 
-/// This will refresh all the balance data from zcashd
+/// This will refresh all the balance data from zclassicd
 void RPC::refresh(bool force) {
     if  (conn == nullptr) 
         return noConnection();
@@ -545,6 +551,7 @@ void RPC::getInfoThenRefresh(bool force) {
         static int    lastBlock = 0;
         int curBlock  = reply["blocks"].get<json::number_integer_t>();
         int version = reply["version"].get<json::number_integer_t>();
+        Settings::getInstance()->setZClassicdVersion(version);
 
         if ( force || (curBlock != lastBlock) ) {
             // Something changed, so refresh everything.
@@ -568,7 +575,7 @@ void RPC::getInfoThenRefresh(bool force) {
         }
 
         // Get network sol/s
-        if (ezcashd) {
+        if (ezclassicd) {
             json payload = {
                 {"jsonrpc", "1.0"},
                 {"id", "someid"},
@@ -603,8 +610,8 @@ void RPC::getInfoThenRefresh(bool force) {
             Settings::getInstance()->setSyncing(isSyncing);
             Settings::getInstance()->setBlockNumber(blockNumber);
 
-            // Update zcashd tab if it exists
-            if (ezcashd) {
+            // Update zclassicd tab if it exists
+            if (ezclassicd) {
                 if (isSyncing) {
                     QString txt = QString::number(blockNumber);
                     if (estimatedheight > 0) {
@@ -632,32 +639,32 @@ void RPC::getInfoThenRefresh(bool force) {
                 ")";
             main->statusLabel->setText(statusText);   
 
-            auto zecPrice = Settings::getUSDFormat(1);
+            auto zclPrice = Settings::getUSDFormat(1);
             QString tooltip;
             if (connections > 0) {
-                tooltip = QObject::tr("Connected to zcashd");
+                tooltip = QObject::tr("Connected to zclassicd");
             }
             else {
-                tooltip = QObject::tr("zcashd has no peer connections");
+                tooltip = QObject::tr("zclassicd has no peer connections");
             }
-            tooltip = tooltip % "(v " % QString::number(version) % ")";
+            tooltip = tooltip % "(v " % QString::number(Settings::getInstance()->getZClassicdVersion()) % ")";
 
-            if (!zecPrice.isEmpty()) {
-                tooltip = "1 ZEC = " % zecPrice % "\n" % tooltip;
+            if (!zclPrice.isEmpty()) {
+                tooltip = "1 ZCL = " % zclPrice % "\n" % tooltip;
             }
             main->statusLabel->setToolTip(tooltip);
             main->statusIcon->setToolTip(tooltip);
         });
 
     }, [=](QNetworkReply* reply, const json&) {
-        // zcashd has probably disappeared.
+        // zclassicd has probably disappeared.
         this->noConnection();
 
         // Prevent multiple dialog boxes, because these are called async
         static bool shown = false;
         if (!shown && prevCallSucceeded) { // show error only first time
             shown = true;
-            QMessageBox::critical(main, QObject::tr("Connection Error"), QObject::tr("There was an error connecting to zcashd. The error was") + ": \n\n"
+            QMessageBox::critical(main, QObject::tr("Connection Error"), QObject::tr("There was an error connecting to zclassicd. The error was") + ": \n\n"
                 + reply->errorString(), QMessageBox::StandardButton::Ok);
             shown = false;
         }
@@ -713,7 +720,7 @@ void RPC::updateUI(bool anyUnconfirmed) {
 };
 
 // Function to process reply of the listunspent and z_listunspent API calls, used below.
-bool RPC::processUnspent(const json& reply) {
+bool RPC::processUnspent(const json& reply, QMap<QString, double>* balancesMap, QList<UnspentOutput>* newUtxos) {
     bool anyUnconfirmed = false;
     for (auto& it : reply.get<json::array_t>()) {
         QString qsAddr = QString::fromStdString(it["address"]);
@@ -722,12 +729,12 @@ bool RPC::processUnspent(const json& reply) {
             anyUnconfirmed = true;
         }
 
-        utxos->push_back(
+        newUtxos->push_back(
             UnspentOutput{ qsAddr, QString::fromStdString(it["txid"]),
                             Settings::getDecimalString(it["amount"].get<json::number_float_t>()),
                             (int)confirmations, it["spendable"].get<json::boolean_t>() });
 
-        (*allBalances)[qsAddr] = (*allBalances)[qsAddr] + it["amount"].get<json::number_float_t>();
+        (*balancesMap)[qsAddr] = (*balancesMap)[qsAddr] + it["amount"].get<json::number_float_t>();
     }
     return anyUnconfirmed;
 };
@@ -744,9 +751,9 @@ void RPC::refreshBalances() {
 
         AppDataModel::getInstance()->setBalances(balT, balZ);
 
-        ui->balSheilded   ->setText(Settings::getZECDisplayFormat(balZ));
-        ui->balTransparent->setText(Settings::getZECDisplayFormat(balT));
-        ui->balTotal      ->setText(Settings::getZECDisplayFormat(balTotal));
+        ui->balSheilded   ->setText(Settings::getZCLDisplayFormat(balZ));
+        ui->balTransparent->setText(Settings::getZCLDisplayFormat(balT));
+        ui->balTotal      ->setText(Settings::getZCLDisplayFormat(balTotal));
 
         ui->balSheilded   ->setToolTip(Settings::getUSDFormat(balZ));
         ui->balTransparent->setToolTip(Settings::getUSDFormat(balT));
@@ -754,20 +761,27 @@ void RPC::refreshBalances() {
     });
 
     // 2. Get the UTXOs
-    // First, create a new UTXO list, deleting the old one;
-    delete utxos;
-    utxos = new QList<UnspentOutput>();
-    delete allBalances;
-    allBalances = new QMap<QString, double>();
+    // First, create a new UTXO list. It will be replacing the existing list when everything is processed.
+    auto newUtxos = new QList<UnspentOutput>();
+    auto newBalances = new QMap<QString, double>();
 
     // Call the Transparent and Z unspent APIs serially and then, once they're done, update the UI
     getTransparentUnspent([=] (json reply) {
-        auto anyTUnconfirmed = processUnspent(reply);
+        auto anyTUnconfirmed = processUnspent(reply, newBalances, newUtxos);
 
         getZUnspent([=] (json reply) {
-            auto anyZUnconfirmed = processUnspent(reply);
+            auto anyZUnconfirmed = processUnspent(reply, newBalances, newUtxos);
 
-            updateUI(anyTUnconfirmed || anyZUnconfirmed);    
+            // Swap out the balances and UTXOs
+            delete allBalances;
+            delete utxos;
+
+            allBalances = newBalances;
+            utxos       = newUtxos;
+
+            updateUI(anyTUnconfirmed || anyZUnconfirmed);
+
+            main->balancesReady();
         });        
     });
 }
@@ -952,7 +966,7 @@ void RPC::checkForUpdate(bool silent) {
     if  (conn == nullptr) 
         return noConnection();
 
-    QUrl cmcURL("https://api.github.com/repos/ZcashFoundation/zec-qt-wallet/releases");
+    QUrl cmcURL("https://api.github.com/repos/ZClassicFoundation/zcl-qt-wallet/releases");
 
     QNetworkRequest req;
     req.setUrl(cmcURL);
@@ -991,14 +1005,14 @@ void RPC::checkForUpdate(bool silent) {
 
                 qDebug() << "Version check: Current " << currentVersion << ", Available " << maxVersion;
 
-                if (maxVersion > currentVersion && maxVersion > maxHiddenVersion) {
+                if (maxVersion > currentVersion && (!silent || maxVersion > maxHiddenVersion)) {
                     auto ans = QMessageBox::information(main, QObject::tr("Update Available"), 
                         QObject::tr("A new release v%1 is available! You have v%2.\n\nWould you like to visit the releases page?")
                             .arg(maxVersion.toString())
                             .arg(currentVersion.toString()),
                         QMessageBox::Yes, QMessageBox::Cancel);
                     if (ans == QMessageBox::Yes) {
-                        QDesktopServices::openUrl(QUrl("https://github.com/ZcashFoundation/zec-qt-wallet/releases"));
+                        QDesktopServices::openUrl(QUrl("https://github.com/ZClassicFoundation/zcl-qt-wallet/releases"));
                     } else {
                         // If the user selects cancel, don't bother them again for this version
                         s.setValue("update/lastversion", maxVersion.toString());
@@ -1019,8 +1033,8 @@ void RPC::checkForUpdate(bool silent) {
     });
 }
 
-// Get the ZEC->USD price from coinmarketcap using their API
-void RPC::refreshZECPrice() {
+// Get the ZCL->USD price from coinmarketcap using their API
+void RPC::refreshZCLPrice() {
     if  (conn == nullptr) 
         return noConnection();
 
@@ -1042,7 +1056,7 @@ void RPC::refreshZECPrice() {
                 } else {
                     qDebug() << reply->errorString();
                 }
-                Settings::getInstance()->setZECPrice(0);
+                Settings::getInstance()->setZCLPrice(0);
                 return;
             } 
 
@@ -1050,15 +1064,15 @@ void RPC::refreshZECPrice() {
             
             auto parsed = json::parse(all, nullptr, false);
             if (parsed.is_discarded()) {
-                Settings::getInstance()->setZECPrice(0);
+                Settings::getInstance()->setZCLPrice(0);
                 return;
             }
 
             for (const json& item : parsed.get<json::array_t>()) {
-                if (item["symbol"].get<json::string_t>() == "ZEC") {
+                if (item["symbol"].get<json::string_t>() == "ZCL") {
                     QString price = QString::fromStdString(item["price_usd"].get<json::string_t>());
-                    qDebug() << "ZEC Price=" << price;
-                    Settings::getInstance()->setZECPrice(price.toDouble());
+                    qDebug() << "ZCL Price=" << price;
+                    Settings::getInstance()->setZCLPrice(price.toDouble());
 
                     return;
                 }
@@ -1069,14 +1083,14 @@ void RPC::refreshZECPrice() {
         }
 
         // If nothing, then set the price to 0;
-        Settings::getInstance()->setZECPrice(0);
+        Settings::getInstance()->setZCLPrice(0);
     });
 }
 
-void RPC::shutdownZcashd() {
-    // Shutdown embedded zcashd if it was started
-    if (ezcashd == nullptr || ezcashd->processId() == 0 || conn == nullptr) {
-        // No zcashd running internally, just return
+void RPC::shutdownZClassicd() {
+    // Shutdown embedded zclassicd if it was started
+    if (ezclassicd == nullptr || ezclassicd->processId() == 0 || conn == nullptr) {
+        // No zclassicd running internally, just return
         return;
     }
 
@@ -1093,8 +1107,8 @@ void RPC::shutdownZcashd() {
     Ui_ConnectionDialog connD;
     connD.setupUi(&d);
     connD.topIcon->setBasePixmap(QIcon(":/icons/res/icon.ico").pixmap(256, 256));
-    connD.status->setText(QObject::tr("Please wait for zec-qt-wallet to exit"));
-    connD.statusDetail->setText(QObject::tr("Waiting for zcashd to exit"));
+    connD.status->setText(QObject::tr("Please wait for ZclWallet to exit"));
+    connD.statusDetail->setText(QObject::tr("Waiting for zclassicd to exit"));
 
     QTimer waiter(main);
 
@@ -1104,9 +1118,9 @@ void RPC::shutdownZcashd() {
     QObject::connect(&waiter, &QTimer::timeout, [&] () {
         waitCount++;
 
-        if ((ezcashd->atEnd() && ezcashd->processId() == 0) ||
+        if ((ezclassicd->atEnd() && ezclassicd->processId() == 0) ||
             waitCount > 30 || 
-            conn->config->zcashDaemon)  {   // If zcashd is daemon, then we don't have to do anything else
+            conn->config->zclassicDaemon)  {   // If zclassicd is daemon, then we don't have to do anything else
             qDebug() << "Ended";
             waiter.stop();
             QTimer::singleShot(1000, [&]() { d.accept(); });
@@ -1116,16 +1130,14 @@ void RPC::shutdownZcashd() {
     });
     waiter.start(1000);
 
-    // Wait for the zcash process to exit.
+    // Wait for the zclassic process to exit.
     if (!Settings::getInstance()->isHeadless()) {
         d.exec(); 
     } else {
         while (waiter.isActive()) {
             QCoreApplication::processEvents();
-#ifdef _WIN32
-#else
-            std::this_thread::sleep_for(std::chrono::seconds(1));
-#endif            
+
+            QThread::sleep(1);
         }
     }
 }

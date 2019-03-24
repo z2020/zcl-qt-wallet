@@ -50,6 +50,9 @@ public:
     void createWebsocket(QString wormholecode);
     void stopWebsocket();
 
+    void balancesReady();
+    void payZClassicURI(QString uri = "");
+
     void updateLabels();
     void updateTAddrCombo(bool checked);
     void updateFromCombo();
@@ -59,7 +62,7 @@ public:
     QLabel*             statusLabel;
     QLabel*             statusIcon;
     QLabel*             loadingLabel;
-    QWidget*            zcashdtab;
+    QWidget*            zclassicdtab;
 
     Logger*      logger;
 
@@ -72,7 +75,7 @@ private:
     void setupTransactionsTab();
     void setupRecieveTab();
     void setupBalancesTab();
-    void setupZcashdTab();
+    void setupZClassicdTab();
 
     void setupTurnstileDialog();
     void setupSettingsModal();
@@ -105,7 +108,6 @@ private:
     
     void donate();
     void addressBook();
-    void payZcashURI();
     void postToZBoard();
     void importPrivKey();
     void exportAllKeys();
@@ -116,6 +118,10 @@ private:
     void doImport(QList<QString>* keys);
 
     void restoreSavedStates();
+    bool eventFilter(QObject *object, QEvent *event);
+
+    bool            uiPaymentsReady    = false;
+    QString         pendingURIPayment;
 
     WSServer*       wsserver = nullptr;
     WormholeClient* wormhole = nullptr;

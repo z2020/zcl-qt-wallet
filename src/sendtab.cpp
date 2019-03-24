@@ -187,7 +187,7 @@ void MainWindow::updateFromCombo() {
 void MainWindow::inputComboTextChanged(int index) {
     auto addr   = ui->inputsCombo->itemText(index);
     auto bal    = rpc->getAllBalances()->value(addr);
-    auto balFmt = Settings::getZECDisplayFormat(bal);
+    auto balFmt = Settings::getZCLDisplayFormat(bal);
 
     ui->sendAddressBalance->setText(balFmt);
     ui->sendAddressBalanceUSD->setText(Settings::getUSDFormat(bal));
@@ -487,7 +487,7 @@ Tx MainWindow::createTxFromSendPage() {
 
     if (Settings::getInstance()->getAutoShield() && sendChangeToSapling) {
         auto saplingAddr = std::find_if(rpc->getAllZAddresses()->begin(), rpc->getAllZAddresses()->end(), [=](auto i) -> bool { 
-            // We're finding a sapling address that is not one of the To addresses, because zcash doesn't allow duplicated addresses
+            // We're finding a sapling address that is not one of the To addresses, because zclassic doesn't allow duplicated addresses
             bool isSapling = Settings::getInstance()->isSaplingAddress(i); 
             if (!isSapling) return false;
 
@@ -565,10 +565,10 @@ bool MainWindow::confirmTx(Tx tx) {
             Addr->setText(fnSplitAddressForWrap(toAddr.addr));
             confirm.gridLayout->addWidget(Addr, row, 0, 1, 1);
 
-            // Amount (ZEC)
+            // Amount (ZCL)
             auto Amt = new QLabel(confirm.sendToAddrs);
             Amt->setObjectName(QString("Amt") % QString::number(i + 1));
-            Amt->setText(Settings::getZECDisplayFormat(toAddr.amount));
+            Amt->setText(Settings::getZCLDisplayFormat(toAddr.amount));
             Amt->setAlignment(Qt::AlignRight | Qt::AlignTrailing | Qt::AlignVCenter);
             confirm.gridLayout->addWidget(Amt, row, 1, 1, 1);
             totalSpending += toAddr.amount;
@@ -618,7 +618,7 @@ bool MainWindow::confirmTx(Tx tx) {
         minerFee->setObjectName(QStringLiteral("minerFee"));
         minerFee->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         confirm.gridLayout->addWidget(minerFee, row, 1, 1, 1);
-        minerFee->setText(Settings::getZECDisplayFormat(tx.fee));
+        minerFee->setText(Settings::getZCLDisplayFormat(tx.fee));
         totalSpending += tx.fee;
 
         auto minerFeeUSD = new QLabel(confirm.sendToAddrs);
@@ -646,9 +646,9 @@ bool MainWindow::confirmTx(Tx tx) {
     // And FromAddress in the confirm dialog 
     confirm.sendFrom->setText(fnSplitAddressForWrap(tx.fromAddr));
     QString tooltip = tr("Current balance      : ") +
-        Settings::getZECUSDDisplayFormat(rpc->getAllBalances()->value(tx.fromAddr));
+        Settings::getZCLUSDDisplayFormat(rpc->getAllBalances()->value(tx.fromAddr));
     tooltip += "\n" + tr("Balance after this Tx: ") +
-        Settings::getZECUSDDisplayFormat(rpc->getAllBalances()->value(tx.fromAddr) - totalSpending);
+        Settings::getZCLUSDDisplayFormat(rpc->getAllBalances()->value(tx.fromAddr) - totalSpending);
     confirm.sendFrom->setToolTip(tooltip);
 
     // Show the dialog and submit it if the user confirms

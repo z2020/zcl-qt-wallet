@@ -31,8 +31,8 @@
     <name>ConnectionDialog</name>
     <message>
         <location filename="../src/connection.ui" line="17"/>
-        <source>zec-qt-wallet</source>
-        <translation>zec-qt-wallet</translation>
+        <source>ZclWallet</source>
+        <translation>ZclWallet</translation>
     </message>
     <message>
         <location filename="../src/connection.ui" line="58"/>
@@ -44,8 +44,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../src/mainwindow.ui" line="14"/>
-        <source>zec-qt-wallet</source>
-        <translation>zec-qt-wallet</translation>
+        <source>ZclWallet</source>
+        <translation>ZclWallet</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="29"/>
@@ -111,7 +111,7 @@
     <message>
         <location filename="../src/mainwindow.ui" line="365"/>
         <location filename="../src/mainwindow.ui" line="372"/>
-        <location filename="../src/mainwindow.ui" line="820"/>
+        <location filename="../src/mainwindow.ui" line="839"/>
         <location filename="../src/sendtab.cpp" line="210"/>
         <location filename="../src/sendtab.cpp" line="215"/>
         <source>Address</source>
@@ -138,8 +138,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.ui" line="446"/>
-        <location filename="../src/mainwindow.cpp" line="1087"/>
-        <location filename="../src/mainwindow.cpp" line="1133"/>
+        <location filename="../src/mainwindow.cpp" line="1162"/>
+        <location filename="../src/mainwindow.cpp" line="1208"/>
         <location filename="../src/sendtab.cpp" line="264"/>
         <source>Memo</source>
         <translation>Memo</translation>
@@ -209,27 +209,27 @@
         <translation>Nueva Dirección</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="745"/>
+        <location filename="../src/mainwindow.ui" line="764"/>
         <source>Label</source>
         <translation>Etiqueta</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="752"/>
+        <location filename="../src/mainwindow.ui" line="771"/>
         <source>Update Label</source>
         <translation>Actualizar Etiqueta</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="766"/>
+        <location filename="../src/mainwindow.ui" line="785"/>
         <source>Address balance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="776"/>
+        <location filename="../src/mainwindow.ui" line="795"/>
         <source>Optional</source>
         <translation>Opcional</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="798"/>
+        <location filename="../src/mainwindow.ui" line="817"/>
         <source>Export Private Key</source>
         <translation>Exportar Clave Privada</translation>
     </message>
@@ -244,398 +244,418 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="868"/>
+        <location filename="../src/mainwindow.ui" line="739"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You should suspend trust in the receipt of funds to Sprout z-addresses until you upgrade to zclassicd v2.0.4. See &lt;a href=&quot;https://z.cash/support/security/announcements/security-announcement-2019-03-19/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Security Announcement&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.ui" line="887"/>
         <source>Transactions</source>
         <translation>Transacciones</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="885"/>
-        <source>zcashd</source>
-        <translation>zcashd</translation>
+        <location filename="../src/mainwindow.ui" line="904"/>
+        <source>zclassicd</source>
+        <translation>zclassicd</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="915"/>
+        <location filename="../src/mainwindow.ui" line="934"/>
         <source>You are currently not mining</source>
         <translation>Actualmente no estas minando</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="935"/>
-        <location filename="../src/mainwindow.ui" line="949"/>
-        <location filename="../src/mainwindow.ui" line="970"/>
-        <location filename="../src/mainwindow.cpp" line="919"/>
+        <location filename="../src/mainwindow.ui" line="954"/>
+        <location filename="../src/mainwindow.ui" line="968"/>
+        <location filename="../src/mainwindow.ui" line="989"/>
+        <location filename="../src/mainwindow.cpp" line="994"/>
         <source>Loading...</source>
         <translation>Cargando...</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="942"/>
+        <location filename="../src/mainwindow.ui" line="961"/>
         <source>Block height</source>
         <translation>Altura del bloque</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="956"/>
+        <location filename="../src/mainwindow.ui" line="975"/>
         <source>Network solution rate</source>
         <translation>Rapidez de solución de red</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="963"/>
+        <location filename="../src/mainwindow.ui" line="982"/>
         <source>Connections</source>
         <translation>Conexiones</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="997"/>
-        <location filename="../src/mainwindow.ui" line="1004"/>
-        <location filename="../src/mainwindow.ui" line="1011"/>
+        <location filename="../src/mainwindow.ui" line="1016"/>
+        <location filename="../src/mainwindow.ui" line="1023"/>
+        <location filename="../src/mainwindow.ui" line="1030"/>
         <source>|</source>
         <translation>|</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1037"/>
+        <location filename="../src/mainwindow.ui" line="1056"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1051"/>
+        <location filename="../src/mainwindow.ui" line="1070"/>
         <source>&amp;Help</source>
         <translation>&amp;Ayuda</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1059"/>
+        <location filename="../src/mainwindow.ui" line="1078"/>
         <source>&amp;Apps</source>
         <translation>&amp;Apps</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1068"/>
+        <location filename="../src/mainwindow.ui" line="1087"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1081"/>
+        <location filename="../src/mainwindow.ui" line="1100"/>
         <source>E&amp;xit</source>
         <translation>Salir</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1086"/>
+        <location filename="../src/mainwindow.ui" line="1105"/>
         <source>&amp;About</source>
         <translation>&amp;Acerca de</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1091"/>
+        <location filename="../src/mainwindow.ui" line="1110"/>
         <source>&amp;Settings</source>
         <translation>&amp;Configuración</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1094"/>
+        <location filename="../src/mainwindow.ui" line="1113"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1099"/>
+        <location filename="../src/mainwindow.ui" line="1118"/>
         <source>&amp;Donate</source>
         <translation>&amp;Donar</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1104"/>
+        <location filename="../src/mainwindow.ui" line="1123"/>
         <source>Check github.com for &amp;updates</source>
         <translation>Consulte las actualizaciones en github.com</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1109"/>
+        <location filename="../src/mainwindow.ui" line="1128"/>
         <source>Sapling &amp;turnstile</source>
         <translation>Sapling &amp;turnstile</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1112"/>
+        <location filename="../src/mainwindow.ui" line="1131"/>
         <source>Ctrl+A, Ctrl+T</source>
         <translation>Ctrl+A, Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1117"/>
+        <location filename="../src/mainwindow.ui" line="1136"/>
         <source>&amp;Import private key</source>
         <translation>Importar clave privada</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1122"/>
+        <location filename="../src/mainwindow.ui" line="1141"/>
         <source>&amp;Export all private keys</source>
         <translation>Exportar todas las claves privadas</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1127"/>
+        <location filename="../src/mainwindow.ui" line="1146"/>
         <source>&amp;z-board.net</source>
         <translation>z-board.net</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1130"/>
+        <location filename="../src/mainwindow.ui" line="1149"/>
         <source>Ctrl+A, Ctrl+Z</source>
         <translation>Ctrl+A, Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1135"/>
+        <location filename="../src/mainwindow.ui" line="1154"/>
         <source>Address &amp;book</source>
         <translation>Directorio</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1138"/>
+        <location filename="../src/mainwindow.ui" line="1157"/>
         <source>Ctrl+B</source>
         <translation>Ctrl+B</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1143"/>
+        <location filename="../src/mainwindow.ui" line="1162"/>
         <source>&amp;Backup wallet.dat</source>
         <translation>Respaldar wallet.dat</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1148"/>
-        <location filename="../src/mainwindow.cpp" line="857"/>
+        <location filename="../src/mainwindow.ui" line="1167"/>
+        <location filename="../src/mainwindow.cpp" line="932"/>
         <source>Export transactions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1153"/>
-        <source>Pay zcash &amp;URI...</source>
+        <location filename="../src/mainwindow.ui" line="1172"/>
+        <source>Pay zclassic &amp;URI...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1158"/>
+        <location filename="../src/mainwindow.ui" line="1177"/>
         <source>Connect mobile &amp;app</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.ui" line="1161"/>
+        <location filename="../src/mainwindow.ui" line="1180"/>
         <source>Ctrl+M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="471"/>
-        <source>Tor configuration is available only when running an embedded zcashd.</source>
+        <location filename="../src/mainwindow.cpp" line="473"/>
+        <source>Tor configuration is available only when running an embedded zclassicd.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="523"/>
+        <location filename="../src/mainwindow.cpp" line="525"/>
         <source>Enable Tor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="524"/>
-        <source>Connection over Tor has been enabled. To use this feature, you need to restart zec-qt-wallet.</source>
+        <location filename="../src/mainwindow.cpp" line="526"/>
+        <source>Connection over Tor has been enabled. To use this feature, you need to restart ZclWallet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="532"/>
+        <location filename="../src/mainwindow.cpp" line="535"/>
         <source>Disable Tor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="533"/>
-        <source>Connection over Tor has been disabled. To fully disconnect from Tor, you need to restart zec-qt-wallet.</source>
+        <location filename="../src/mainwindow.cpp" line="536"/>
+        <source>Connection over Tor has been disabled. To fully disconnect from Tor, you need to restart ZclWallet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="575"/>
-        <source>Thanks for supporting zec-qt-wallet!</source>
-        <translation>Gracias por apoyar zec-qt-wallet!</translation>
+        <location filename="../src/mainwindow.cpp" line="601"/>
+        <source>Thanks for supporting ZclWallet!</source>
+        <translation>Gracias por apoyar ZclWallet!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="577"/>
+        <location filename="../src/mainwindow.cpp" line="603"/>
         <source>Donate 0.01 </source>
         <translation>Donar 0.01 </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="577"/>
-        <source> to support zec-qt-wallet</source>
-        <translation> para apoyar zec-qt-wallet</translation>
+        <location filename="../src/mainwindow.cpp" line="603"/>
+        <source> to support ZclWallet</source>
+        <translation> para apoyar ZclWallet</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="614"/>
+        <location filename="../src/mainwindow.cpp" line="640"/>
         <source>You are on testnet, your post won&apos;t actually appear on z-board.net</source>
         <translation>Estas en testnet, tu publicación no aparecerá en z-board.net</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="670"/>
+        <location filename="../src/mainwindow.cpp" line="696"/>
         <source>You need a sapling address with available balance to post</source>
         <translation>Necesitas una dirección Sapling con saldo disponible para publicar</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="684"/>
+        <location filename="../src/mainwindow.cpp" line="710"/>
         <location filename="../src/sendtab.cpp" line="685"/>
         <source>Computing Tx: </source>
         <translation>Calculando Tx: </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="844"/>
+        <location filename="../src/mainwindow.cpp" line="919"/>
         <source>The keys were imported. It may take several minutes to rescan the blockchain. Until then, functionality may be limited</source>
         <translation>Las claves fueron importadas. Puede que se demore varios minutos en volver a escanear el blockchain. Hasta entonces, la funcionalidad puede ser limitada.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="708"/>
+        <location filename="../src/mainwindow.cpp" line="734"/>
         <source>Private key import rescan finished</source>
         <translation>Importación de clave privada re-escaneada finalizada</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="728"/>
-        <source>Error paying zcash URI</source>
+        <location filename="../src/mainwindow.cpp" line="565"/>
+        <source>ZclWallet needs to restart to rescan/reindex. ZclWallet will now close, please restart ZclWallet to continue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="729"/>
-        <source>URI should be of the form &apos;zcash:&lt;addr&gt;?amt=x&amp;memo=y</source>
+        <location filename="../src/mainwindow.cpp" line="568"/>
+        <source>You also need to restart your zclassicd.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="733"/>
-        <source>Paste Zcash URI</source>
+        <location filename="../src/mainwindow.cpp" line="571"/>
+        <source>Restart ZclWallet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="757"/>
+        <location filename="../src/mainwindow.cpp" line="798"/>
+        <source>Error paying zclassic URI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="799"/>
+        <source>URI should be of the form &apos;zclassic:&lt;addr&gt;?amt=x&amp;memo=y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="804"/>
+        <source>Paste ZClassic URI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="831"/>
         <source>Could not understand address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="790"/>
+        <location filename="../src/mainwindow.cpp" line="864"/>
         <source>Unknown field in URI:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="822"/>
+        <location filename="../src/mainwindow.cpp" line="897"/>
         <source>Please paste your private keys (z-Addr or t-Addr) here, one per line</source>
         <translation>Por favor pegue sus claves privadas (z-Addr o t-Addr) aqui, una por línea</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="823"/>
-        <source>The keys will be imported into your connected zcashd node</source>
-        <translation>Las claves serán importadas en su nodo zcashd conectado</translation>
+        <location filename="../src/mainwindow.cpp" line="898"/>
+        <source>The keys will be imported into your connected zclassicd node</source>
+        <translation>Las claves serán importadas en su nodo zclassicd conectado</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="863"/>
+        <location filename="../src/mainwindow.cpp" line="938"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="864"/>
+        <location filename="../src/mainwindow.cpp" line="939"/>
         <source>Error exporting transactions, file was not saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="886"/>
+        <location filename="../src/mainwindow.cpp" line="961"/>
         <source>No wallet.dat</source>
         <translation>Sin wallet.dat</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="886"/>
+        <location filename="../src/mainwindow.cpp" line="961"/>
         <source>Couldn&apos;t find the wallet.dat on this computer</source>
         <translation>No se pudo encontrar wallet.dat en esta computadora</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="887"/>
-        <source>You need to back it up from the machine zcashd is running on</source>
-        <translation>Necesitas hacer una copia de seguridad de la computadora en la que se está ejecutando zcashd</translation>
+        <location filename="../src/mainwindow.cpp" line="962"/>
+        <source>You need to back it up from the machine zclassicd is running on</source>
+        <translation>Necesitas hacer una copia de seguridad de la computadora en la que se está ejecutando zclassicd</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="891"/>
+        <location filename="../src/mainwindow.cpp" line="966"/>
         <source>Backup wallet.dat</source>
         <translation>Respaldar wallet.dat</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="896"/>
+        <location filename="../src/mainwindow.cpp" line="971"/>
         <source>Couldn&apos;t backup</source>
         <translation>No se pudo hacer una copia de seguridad</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="896"/>
+        <location filename="../src/mainwindow.cpp" line="971"/>
         <source>Couldn&apos;t backup the wallet.dat file.</source>
         <translation>No se pudo hacer copia de seguridad de wallet.dat</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="897"/>
+        <location filename="../src/mainwindow.cpp" line="972"/>
         <source>You need to back it up manually.</source>
         <translation>Necesitas hacer una copia de seguridad manualmente.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="924"/>
+        <location filename="../src/mainwindow.cpp" line="999"/>
         <source>These are all the private keys for all the addresses in your wallet</source>
         <translation>Estas son todas las claves privadas para todas las direcciones en tu billetera</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="926"/>
+        <location filename="../src/mainwindow.cpp" line="1001"/>
         <source>Private key for </source>
         <translation>Clave privada para </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="934"/>
+        <location filename="../src/mainwindow.cpp" line="1009"/>
         <source>Save File</source>
         <translation>Guardar Archivo</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="938"/>
+        <location filename="../src/mainwindow.cpp" line="1013"/>
         <source>Unable to open file</source>
         <translation>No es posible abrir el archivo</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1033"/>
-        <location filename="../src/mainwindow.cpp" line="1115"/>
+        <location filename="../src/mainwindow.cpp" line="1108"/>
+        <location filename="../src/mainwindow.cpp" line="1190"/>
         <source>Copy address</source>
         <translation>Copiar dirección</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1036"/>
         <location filename="../src/mainwindow.cpp" line="1111"/>
-        <location filename="../src/mainwindow.cpp" line="1117"/>
+        <location filename="../src/mainwindow.cpp" line="1186"/>
+        <location filename="../src/mainwindow.cpp" line="1192"/>
         <source>Copied to clipboard</source>
         <translation>Copiado al portapapeles</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1039"/>
+        <location filename="../src/mainwindow.cpp" line="1114"/>
         <source>Get private key</source>
         <translation>Obtener clave privada</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1050"/>
+        <location filename="../src/mainwindow.cpp" line="1125"/>
         <source>Shield balance to Sapling</source>
         <translation>Proteger saldo a Sapling</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1055"/>
-        <location filename="../src/mainwindow.cpp" line="1121"/>
+        <location filename="../src/mainwindow.cpp" line="1130"/>
+        <location filename="../src/mainwindow.cpp" line="1196"/>
         <source>View on block explorer</source>
         <translation>Ver en el explorador de bloques</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1067"/>
+        <location filename="../src/mainwindow.cpp" line="1142"/>
         <source>Migrate to Sapling</source>
         <translation>Migrar a Sapling</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1109"/>
+        <location filename="../src/mainwindow.cpp" line="1184"/>
         <source>Copy txid</source>
         <translation>Copiar txid</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1132"/>
+        <location filename="../src/mainwindow.cpp" line="1207"/>
         <source>View Memo</source>
         <translation>Ver Memo</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1146"/>
+        <location filename="../src/mainwindow.cpp" line="1221"/>
         <source>Reply to </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1226"/>
+        <location filename="../src/mainwindow.cpp" line="1303"/>
         <source>Created new t-Addr</source>
         <translation>Nuevo dirección t-Addr creada</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1245"/>
+        <location filename="../src/mainwindow.cpp" line="1322"/>
         <source>Creation of new Sprout addresses is deprecated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1327"/>
+        <location filename="../src/mainwindow.cpp" line="1409"/>
         <source>Address has been previously used</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="1329"/>
+        <location filename="../src/mainwindow.cpp" line="1411"/>
         <source>Address is unused</source>
         <translation type="unfinished"></translation>
     </message>
@@ -735,7 +755,7 @@ doesn&apos;t look like a z-address</source>
     </message>
     <message>
         <location filename="../src/mobileappconnector.ui" line="36"/>
-        <source>Scan this QRCode from your ZecQT Wallet companion app to connect your phone</source>
+        <source>Scan this QRCode from your ZclQT Wallet companion app to connect your phone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -750,12 +770,12 @@ doesn&apos;t look like a z-address</source>
     </message>
     <message>
         <location filename="../src/mobileappconnector.ui" line="84"/>
-        <source>Allow connections over the internet via zec-qt-wallet wormhole</source>
+        <source>Allow connections over the internet via ZclWallet wormhole</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/mobileappconnector.ui" line="94"/>
-        <source>ZecQT Wallet Companion App</source>
+        <source>ZclQT Wallet Companion App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -791,115 +811,115 @@ doesn&apos;t look like a z-address</source>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/rpc.cpp" line="374"/>
-        <location filename="../src/rpc.cpp" line="376"/>
+        <location filename="../src/rpc.cpp" line="380"/>
+        <location filename="../src/rpc.cpp" line="382"/>
         <source>No Connection</source>
         <translation>Sin Conexión</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="618"/>
+        <location filename="../src/rpc.cpp" line="625"/>
         <source>Downloading blocks</source>
         <translation>Descargando Bloques</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="621"/>
+        <location filename="../src/rpc.cpp" line="628"/>
         <source>Block height</source>
         <translation>Altura del bloque</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="627"/>
+        <location filename="../src/rpc.cpp" line="634"/>
         <source>Syncing</source>
         <translation>Sincronizando</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="627"/>
+        <location filename="../src/rpc.cpp" line="634"/>
         <source>Connected</source>
         <translation>Conectando</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="629"/>
+        <location filename="../src/rpc.cpp" line="636"/>
         <source>testnet:</source>
         <translation>testnet:</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="638"/>
-        <source>Connected to zcashd</source>
-        <translation>Conectando a zcashd</translation>
+        <location filename="../src/rpc.cpp" line="645"/>
+        <source>Connected to zclassicd</source>
+        <translation>Conectando a zclassicd</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="641"/>
-        <source>zcashd has no peer connections</source>
+        <location filename="../src/rpc.cpp" line="648"/>
+        <source>zclassicd has no peer connections</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="660"/>
-        <source>There was an error connecting to zcashd. The error was</source>
-        <translation>Hubo un error al conectar con zcashd. El error fue</translation>
+        <location filename="../src/rpc.cpp" line="667"/>
+        <source>There was an error connecting to zclassicd. The error was</source>
+        <translation>Hubo un error al conectar con zclassicd. El error fue</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="693"/>
+        <location filename="../src/mainwindow.cpp" line="719"/>
         <location filename="../src/sendtab.cpp" line="694"/>
         <location filename="../src/turnstile.cpp" line="367"/>
         <source>The transaction with id </source>
         <translation>La transacción con id </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="693"/>
+        <location filename="../src/mainwindow.cpp" line="719"/>
         <location filename="../src/sendtab.cpp" line="694"/>
         <location filename="../src/turnstile.cpp" line="367"/>
         <source> failed. The error was</source>
         <translation> falló. El error fue</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="690"/>
+        <location filename="../src/mainwindow.cpp" line="716"/>
         <location filename="../src/sendtab.cpp" line="691"/>
         <location filename="../src/turnstile.cpp" line="364"/>
         <source> Tx </source>
         <translation> Tx</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="690"/>
+        <location filename="../src/mainwindow.cpp" line="716"/>
         <location filename="../src/sendtab.cpp" line="691"/>
         <location filename="../src/turnstile.cpp" line="364"/>
         <source> failed</source>
         <translation> falló</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="946"/>
+        <location filename="../src/rpc.cpp" line="960"/>
         <source> tx computing. This can take several minutes.</source>
         <translation>tx computando. Esto puede tomar varios minutos.</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="995"/>
+        <location filename="../src/rpc.cpp" line="1009"/>
         <source>Update Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="996"/>
+        <location filename="../src/rpc.cpp" line="1010"/>
         <source>A new release v%1 is available! You have v%2.
 
 Would you like to visit the releases page?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="1008"/>
+        <location filename="../src/rpc.cpp" line="1022"/>
         <source>No updates available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="1009"/>
+        <location filename="../src/rpc.cpp" line="1023"/>
         <source>You already have the latest release v%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="1096"/>
-        <source>Please wait for zec-qt-wallet to exit</source>
-        <translation>Por favor, espere que zec-qt-wallet salga</translation>
+        <location filename="../src/rpc.cpp" line="1110"/>
+        <source>Please wait for ZclWallet to exit</source>
+        <translation>Por favor, espere que ZclWallet salga</translation>
     </message>
     <message>
-        <location filename="../src/rpc.cpp" line="1097"/>
-        <source>Waiting for zcashd to exit</source>
-        <translation>Esperando que zcashd salga</translation>
+        <location filename="../src/rpc.cpp" line="1111"/>
+        <source>Waiting for zclassicd to exit</source>
+        <translation>Esperando que zclassicd salga</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="43"/>
@@ -908,18 +928,18 @@ Would you like to visit the releases page?</source>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="52"/>
-        <source>Starting embedded zcashd</source>
-        <translation>Iniciando zcashd incorporado</translation>
+        <source>Starting embedded zclassicd</source>
+        <translation>Iniciando zclassicd incorporado</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="62"/>
-        <source>zcashd is set to run as daemon</source>
-        <translation>zcashd está configurado para ejecutarse como demonio</translation>
+        <source>zclassicd is set to run as daemon</source>
+        <translation>zclassicd está configurado para ejecutarse como demonio</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="62"/>
-        <source>Waiting for zcashd</source>
-        <translation>Esperando zcashd</translation>
+        <source>Waiting for zclassicd</source>
+        <translation>Esperando zclassicd</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="146"/>
@@ -978,17 +998,22 @@ Please set the host/port and user/password in the Edit-&gt;Settings menu.</sourc
     </message>
     <message>
         <location filename="../src/connection.cpp" line="398"/>
-        <source>Could not connect to zcashd configured in settings.
+        <source>Could not connect to zclassicd configured in settings.
 
 Please set the host/port and user/password in the Edit-&gt;Settings menu.</source>
-        <translation>No su puede conectar a zcashd usando la configuración actual.
+        <translation>No su puede conectar a zclassicd usando la configuración actual.
 
 Por favor, especificar el host/puerta y usario/contraseña en el menú Editar-&gt;Configuración.
 	</translation>
     </message>
     <message>
-        <location filename="../src/connection.cpp" line="719"/>
-        <location filename="../src/mainwindow.cpp" line="695"/>
+        <location filename="../src/connection.cpp" line="491"/>
+        <source>This may take several hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/connection.cpp" line="730"/>
+        <location filename="../src/mainwindow.cpp" line="721"/>
         <location filename="../src/sendtab.cpp" line="696"/>
         <location filename="../src/turnstile.cpp" line="369"/>
         <source>Transaction Error</source>
@@ -1001,28 +1026,28 @@ Por favor, especificar el host/puerta y usario/contraseña en el menú Editar-&g
     </message>
     <message>
         <location filename="../src/connection.cpp" line="77"/>
-        <source>You have zcashd set to start as a daemon, which can cause problems with zec-qt-wallet
+        <source>You have zclassicd set to start as a daemon, which can cause problems with ZclWallet
 
-.Please remove the following line from your zcash.conf and restart zec-qt-wallet
+.Please remove the following line from your zclassic.conf and restart ZclWallet
 daemon=1</source>
-        <translation>Has configurado zcashd para ejecutar como demonio, lo que puede causar problemas con zec-qt-wallet.
-Por favor, eliminar la siguente linea de zcashd.conf y reinicia zec-qt-wallet
+        <translation>Has configurado zclassicd para ejecutar como demonio, lo que puede causar problemas con ZclWallet.
+Por favor, eliminar la siguente linea de zclassicd.conf y reinicia ZclWallet
 daemon=1</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="82"/>
-        <source>Couldn&apos;t start the embedded zcashd.
+        <source>Couldn&apos;t start the embedded zclassicd.
 
 Please try restarting.
 
-If you previously started zcashd with custom arguments, you might need to reset zcash.conf.
+If you previously started zclassicd with custom arguments, you might need to reset zclassic.conf.
 
-If all else fails, please run zcashd manually.</source>
-        <translation>No se pudo iniciar zcashd incorporado.
+If all else fails, please run zclassicd manually.</source>
+        <translation>No se pudo iniciar zclassicd incorporado.
 	
 Por favor, intenta reiniciar.
 		
-Si todo falla, por favor ejecutar zcashd manualmente.
+Si todo falla, por favor ejecutar zclassicd manualmente.
 	</translation>
     </message>
     <message>
@@ -1032,41 +1057,41 @@ Si todo falla, por favor ejecutar zcashd manualmente.
     </message>
     <message>
         <location filename="../src/connection.cpp" line="93"/>
-        <source>Couldn&apos;t connect to zcashd configured in zcash.conf.
+        <source>Couldn&apos;t connect to zclassicd configured in zclassic.conf.
 
-Not starting embedded zcashd because --no-embedded was passed</source>
-        <translation>No se pudo conectar con zcashd configurado en zcashd.conf.
+Not starting embedded zclassicd because --no-embedded was passed</source>
+        <translation>No se pudo conectar con zclassicd configurado en zclassicd.conf.
 	
-No iniciaré zcashd incorporado porque la opcion --no-embedded fue dada.</translation>
+No iniciaré zclassicd incorporado porque la opcion --no-embedded fue dada.</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="319"/>
-        <source>zcashd error</source>
-        <translation>error de zcashd</translation>
+        <source>zclassicd error</source>
+        <translation>error de zclassicd</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="459"/>
-        <source>Authentication failed. The username / password you specified was not accepted by zcashd. Try changing it in the Edit-&gt;Settings menu</source>
-        <translation>Autenticación fallida. El usario/contraseña que epecificó no fue aceptado por zcashd. Intenta cambiarlo en el menu Editar-&gt;Configuración.</translation>
+        <source>Authentication failed. The username / password you specified was not accepted by zclassicd. Try changing it in the Edit-&gt;Settings menu</source>
+        <translation>Autenticación fallida. El usario/contraseña que epecificó no fue aceptado por zclassicd. Intenta cambiarlo en el menu Editar-&gt;Configuración.</translation>
     </message>
     <message>
         <location filename="../src/connection.cpp" line="474"/>
-        <source>Your zcashd is starting up. Please wait.</source>
-        <translation>Tu zcashd se está iniciando. Por favor espera.</translation>
+        <source>Your zclassicd is starting up. Please wait.</source>
+        <translation>Tu zclassicd se está iniciando. Por favor espera.</translation>
     </message>
     <message>
-        <location filename="../src/connection.cpp" line="497"/>
-        <location filename="../src/rpc.cpp" line="660"/>
+        <location filename="../src/connection.cpp" line="508"/>
+        <location filename="../src/rpc.cpp" line="667"/>
         <source>Connection Error</source>
         <translation>Error de conexión</translation>
     </message>
     <message>
-        <location filename="../src/connection.cpp" line="719"/>
+        <location filename="../src/connection.cpp" line="730"/>
         <source>There was an error sending the transaction. The error was:</source>
         <translation>Hubo un error al enviar la transacción. El error fue:</translation>
     </message>
     <message>
-        <location filename="../src/settings.cpp" line="187"/>
+        <location filename="../src/settings.cpp" line="195"/>
         <source>Tx submitted (right click to copy) txid:</source>
         <translation>Tx presentado (clic derecho para copiar) txid:</translation>
     </message>
@@ -1120,8 +1145,8 @@ El saldo es insuficiente para una migración automática.
     </message>
     <message>
         <location filename="../src/addressbook.cpp" line="128"/>
-        <source> doesn&apos;t seem to be a valid Zcash address.</source>
-        <translation>no parece ser una dirección Zcash válida</translation>
+        <source> doesn&apos;t seem to be a valid ZClassic address.</source>
+        <translation>no parece ser una dirección ZClassic válida</translation>
     </message>
     <message>
         <location filename="../src/addressbook.cpp" line="138"/>
@@ -1165,7 +1190,7 @@ El saldo es insuficiente para una migración automática.
     </message>
     <message>
         <location filename="../src/websockets.cpp" line="345"/>
-        <source>Connected over the internet via zec-qt-wallet wormhole service</source>
+        <source>Connected over the internet via ZclWallet wormhole service</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1211,8 +1236,8 @@ El saldo es insuficiente para una migración automática.
     </message>
     <message>
         <location filename="../src/settings.ui" line="33"/>
-        <source>zcashd connection</source>
-        <translation>conexión zcashd</translation>
+        <source>zclassicd connection</source>
+        <translation>conexión zclassicd</translation>
     </message>
     <message>
         <location filename="../src/settings.ui" line="62"/>
@@ -1252,6 +1277,31 @@ El saldo es insuficiente para una migración automática.
     <message>
         <location filename="../src/settings.ui" line="259"/>
         <source>Connect via Tor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings.ui" line="274"/>
+        <source>Troubleshooting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings.ui" line="280"/>
+        <source>Reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings.ui" line="287"/>
+        <source>Rescan the blockchain for any missing wallet transactions and to correct your wallet balance. This will take several hours. You need to restart ZclWallet for this to take effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings.ui" line="297"/>
+        <source>Rescan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/settings.ui" line="324"/>
+        <source>Rebuild the entire blockchain from the genesis block, by rescanning all the block files. This may take several hours to days, depending on your hardware. You need to restart ZclWallet for this to take effect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1422,7 +1472,7 @@ El saldo es insuficiente para una migración automática.
     </message>
     <message>
         <location filename="../src/confirm.ui" line="155"/>
-        <source>zcashd doesn&apos;t seem to have any peers. You might not be connected to the internet, so this Transaction might not work.</source>
+        <source>zclassicd doesn&apos;t seem to have any peers. You might not be connected to the internet, so this Transaction might not work.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1437,44 +1487,44 @@ El saldo es insuficiente para una migración automática.
     </message>
 </context>
 <context>
-    <name>createZcashConf</name>
+    <name>createZClassicConf</name>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="14"/>
-        <source>Configure zcash.conf</source>
+        <location filename="../src/createzclassicconfdialog.ui" line="14"/>
+        <source>Configure zclassic.conf</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="61"/>
+        <location filename="../src/createzclassicconfdialog.ui" line="61"/>
         <source>Show Advanced Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="86"/>
-        <source>Your zcash node will be configured for you automatically</source>
+        <location filename="../src/createzclassicconfdialog.ui" line="86"/>
+        <source>Your zclassic node will be configured for you automatically</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="102"/>
+        <location filename="../src/createzclassicconfdialog.ui" line="102"/>
         <source>Use custom datadir</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="109"/>
+        <location filename="../src/createzclassicconfdialog.ui" line="109"/>
         <source>Please choose a directory to store your wallet.dat and blockchain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="118"/>
+        <location filename="../src/createzclassicconfdialog.ui" line="118"/>
         <source>Choose directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="154"/>
+        <location filename="../src/createzclassicconfdialog.ui" line="154"/>
         <source>Connect over Tor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/createzcashconfdialog.ui" line="161"/>
+        <location filename="../src/createzclassicconfdialog.ui" line="161"/>
         <source>Please note that you&apos;ll need to already have a Tor service configured on port 9050</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1566,8 +1616,8 @@ El saldo es insuficiente para una migración automática.
     </message>
     <message>
         <location filename="../src/zboard.ui" line="85"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ZBoard: Fully anonymous and untraceable chat messages based on the ZCash blockchain. &lt;a href=&quot;http://www.z-board.net/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.z-board.net/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ZBoard: Mensajes de chat totalmente anónimos e imposibles de rastrear basados en la cadena de bloques Zcash. &lt;a href=&quot;http://www.z-board.net/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.z-board.net/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ZBoard: Fully anonymous and untraceable chat messages based on the ZClassic blockchain. &lt;a href=&quot;http://www.z-board.net/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.z-board.net/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ZBoard: Mensajes de chat totalmente anónimos e imposibles de rastrear basados en la cadena de bloques ZClassic. &lt;a href=&quot;http://www.z-board.net/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://www.z-board.net/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/zboard.ui" line="107"/>

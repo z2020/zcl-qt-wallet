@@ -38,15 +38,15 @@ public:
     ~RPC();
 
     void setConnection(Connection* c);
-    void setEZcashd(QProcess* p);
-    const QProcess* getEZcashD() { return ezcashd; }
+    void setEZClassicd(QProcess* p);
+    const QProcess* getEZClassicD() { return ezclassicd; }
 
     void refresh(bool force = false);
 
     void refreshAddresses();    
     
     void checkForUpdate(bool silent = true);
-    void refreshZECPrice();
+    void refreshZCLPrice();
     void getZboardTopics(std::function<void(QMap<QString, QString>)> cb);
 
     void executeTransaction(Tx tx, 
@@ -76,8 +76,9 @@ public:
     void importZPrivKey(QString addr, bool rescan, const std::function<void(json)>& cb);
     void importTPrivKey(QString addr, bool rescan, const std::function<void(json)>& cb);
 
-    void shutdownZcashd();
+    void shutdownZClassicd();
     void noConnection();
+    bool isEmbedded() { return ezclassicd != nullptr; }
 
     QString getDefaultSaplingAddress();
     QString getDefaultTAddress();
@@ -94,7 +95,7 @@ private:
     void refreshSentZTrans();
     void refreshReceivedZTrans(QList<QString> zaddresses);
 
-    bool processUnspent     (const json& reply);
+    bool processUnspent     (const json& reply, QMap<QString, double>* newBalances, QList<UnspentOutput>* newUtxos);
     void updateUI           (bool anyUnconfirmed);
 
     void getInfoThenRefresh(bool force);
@@ -108,7 +109,7 @@ private:
     void getTAddresses          (const std::function<void(json)>& cb);
 
     Connection*                 conn                        = nullptr;
-    QProcess*                   ezcashd                     = nullptr;
+    QProcess*                   ezclassicd                     = nullptr;
 
     QList<UnspentOutput>*       utxos                       = nullptr;
     QMap<QString, double>*      allBalances                 = nullptr;

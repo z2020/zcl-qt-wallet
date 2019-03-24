@@ -13,7 +13,7 @@ PRECOMPILED_HEADER = src/precompiled.h
 QT += widgets
 QT += websockets
 
-TARGET = zec-qt-wallet
+TARGET = zclwallet
 
 TEMPLATE = app
 
@@ -93,16 +93,21 @@ FORMS += \
     src/zboard.ui \
     src/addressbook.ui \
     src/mobileappconnector.ui \
-    src/createzcashconfdialog.ui \
+    src/createzclassicconfdialog.ui \
     src/recurringdialog.ui \
     src/newrecurring.ui
 
 
-TRANSLATIONS = res/zec_qt_wallet_es.ts \
-               res/zec_qt_wallet_fr.ts \
-               res/zec_qt_wallet_de.ts \
-               res/zec_qt_wallet_pt.ts \
-               res/zec_qt_wallet_it.ts 
+TRANSLATIONS = res/zcl_qt_wallet_es.ts \
+               res/zcl_qt_wallet_fr.ts \
+               res/zcl_qt_wallet_de.ts \
+               res/zcl_qt_wallet_pt.ts \
+               res/zcl_qt_wallet_it.ts 
+
+include(singleapplication/singleapplication.pri)
+DEFINES += QAPPLICATION_CLASS=QApplication
+
+QMAKE_INFO_PLIST = res/Info.plist
 
 win32: RC_ICONS = res/icon.ico
 ICON = res/logo.icns

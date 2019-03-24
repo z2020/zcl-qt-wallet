@@ -40,7 +40,7 @@ void Settings::saveSettings(const QString& host, const QString& port, const QStr
     init();
 }
 
-void Settings::setUsingZcashConf(QString confLocation) {
+void Settings::setUsingZClassicConf(QString confLocation) {
     if (!confLocation.isEmpty())
         _confLocation = confLocation;
 }
@@ -82,6 +82,14 @@ bool Settings::isTAddress(QString addr) {
     return addr.startsWith("t");
 }
 
+int Settings::getZClassicdVersion() {
+    return _zclassicdVersion;
+}
+
+void Settings::setZClassicdVersion(int version) {
+    _zclassicdVersion = version;
+}
+
 bool Settings::isSyncing() {
     return _isSyncing;
 }
@@ -103,8 +111,8 @@ bool Settings::isSaplingActive() {
            (!isTestnet() && getBlockNumber() > 419200);
 }
 
-double Settings::getZECPrice() { 
-    return zecPrice; 
+double Settings::getZCLPrice() { 
+    return zclPrice; 
 }
 
 bool Settings::getAutoShield() {
@@ -153,8 +161,8 @@ void Settings::saveRestore(QDialog* d) {
 }
 
 QString Settings::getUSDFormat(double bal) {
-    if (!Settings::getInstance()->isTestnet() && Settings::getInstance()->getZECPrice() > 0) 
-        return "$" + QLocale(QLocale::English).toString(bal * Settings::getInstance()->getZECPrice(), 'f', 2);
+    if (!Settings::getInstance()->isTestnet() && Settings::getInstance()->getZCLPrice() > 0) 
+        return "$" + QLocale(QLocale::English).toString(bal * Settings::getInstance()->getZCLPrice(), 'f', 2);
     else 
         return QString();
 }
@@ -171,26 +179,26 @@ QString Settings::getDecimalString(double amt) {
     return f;
 }
 
-QString Settings::getZECDisplayFormat(double bal) {
+QString Settings::getZCLDisplayFormat(double bal) {
     // This is idiotic. Why doesn't QString have a way to do this?
     return getDecimalString(bal) % " " % Settings::getTokenName();
 }
 
-QString Settings::getZECUSDDisplayFormat(double bal) {
+QString Settings::getZCLUSDDisplayFormat(double bal) {
     auto usdFormat = getUSDFormat(bal);
     if (!usdFormat.isEmpty())
-        return getZECDisplayFormat(bal) % " (" % getUSDFormat(bal) % ")";
+        return getZCLDisplayFormat(bal) % " (" % getUSDFormat(bal) % ")";
     else
-        return getZECDisplayFormat(bal);
+        return getZCLDisplayFormat(bal);
 }
 
 const QString Settings::txidStatusMessage = QString(QObject::tr("Tx submitted (right click to copy) txid:"));
 
 QString Settings::getTokenName() {
     if (Settings::getInstance()->isTestnet()) {
-        return "TAZ";
+        return "ZCT";
     } else {
-        return "ZEC";
+        return "ZCL";
     }
 }
 
@@ -207,7 +215,7 @@ QString Settings::getDonationAddr(bool sapling) {
             return "zcEgrceTwvoiFdEvPWcsJHAMrpLsprMF6aRJiQa3fan5ZphyXLPuHghnEPrEPRoEVzUy65GnMVyCTRdkT6BYBepnXh6NBYs";    
 }
 
-bool Settings::addToZcashConf(QString confLocation, QString line) {
+bool Settings::addToZClassicConf(QString confLocation, QString line) {
     QFile file(confLocation);
     if (!file.open(QIODevice::ReadWrite | QIODevice::Append))
         return false;
@@ -220,7 +228,10 @@ bool Settings::addToZcashConf(QString confLocation, QString line) {
     return true;
 }
 
-bool Settings::removeFromZcashConf(QString confLocation, QString option) {
+bool Settings::removeFromZClassicConf(QString confLocation, QString option) {
+    if (confLocation.isEmpty())
+        return false;
+
     // To remove an option, we'll create a new file, and copy over everything but the option.
     QFile file(confLocation);
     if (!file.open(QIODevice::ReadOnly)) 
@@ -233,7 +244,6 @@ bool Settings::removeFromZcashConf(QString confLocation, QString option) {
         auto s = line.indexOf("=");
         QString name = line.left(s).trimmed().toLower();
         if (name != option) {
-            qDebug() << "Copied " << line;
             lines.append(line);
         }
     }    

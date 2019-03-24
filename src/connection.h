@@ -10,9 +10,9 @@ using json = nlohmann::json;
 class RPC;
 
 enum ConnectionType {
-    DetectedConfExternalZcashD = 1,
-    UISettingsZCashD,
-    InternalZcashD
+    DetectedConfExternalZClassicD = 1,
+    UISettingsZClassicD,
+    InternalZClassicD
 };
 
 struct ConnectionConfig {
@@ -20,9 +20,9 @@ struct ConnectionConfig {
     QString port;
     QString rpcuser;
     QString rpcpassword;
-    bool    usingZcashConf;
-    bool    zcashDaemon;
-    QString zcashDir;
+    bool    usingZClassicConf;
+    bool    zclassicDaemon;
+    QString zclassicDir;
     QString proxy;
 
     ConnectionType connType;
@@ -39,32 +39,32 @@ public:
     void loadConnection();
 
 private:
-    std::shared_ptr<ConnectionConfig> autoDetectZcashConf();
+    std::shared_ptr<ConnectionConfig> autoDetectZClassicConf();
     std::shared_ptr<ConnectionConfig> loadFromSettings();
 
     Connection* makeConnection(std::shared_ptr<ConnectionConfig> config);
 
-    void doAutoConnect(bool tryEzcashdStart = true);
+    void doAutoConnect(bool tryEzclassicdStart = true);
     void doManualConnect();
 
-    void createZcashConf();
-    QString locateZcashConfFile();
-    QString zcashConfWritableLocation();
+    void createZClassicConf();
+    QString locateZClassicConfFile();
+    QString zclassicConfWritableLocation();
     QString zcashParamsDir();
 
     bool verifyParams();
     void downloadParams(std::function<void(void)> cb);
     void doNextDownload(std::function<void(void)> cb);
-    bool startEmbeddedZcashd();
+    bool startEmbeddedZClassicd();
 
-    void refreshZcashdState(Connection* connection, std::function<void(void)> refused);
+    void refreshZClassicdState(Connection* connection, std::function<void(void)> refused);
 
     void showError(QString explanation);
     void showInformation(QString info, QString detail = "");
 
     void doRPCSetConnection(Connection* conn);
 
-    QProcess*               ezcashd  = nullptr;
+    QProcess*               ezclassicd  = nullptr;
 
     QDialog*                d;
     Ui_ConnectionDialog*    connD;
@@ -81,7 +81,7 @@ private:
 };
 
 /**
- * Represents a connection to a zcashd. It may even start a new zcashd if needed.
+ * Represents a connection to a zclassicd. It may even start a new zclassicd if needed.
  * This is also a UI class, so it may show a dialog waiting for the connection.
 */
 class Connection {

@@ -7,11 +7,13 @@ param (
 )
 
 Write-Host "[Initializing]"
-Remove-Item -Force -ErrorAction Ignore ./artifacts/linux-binaries-zec-qt-wallet-v$version.tar.gz
-Remove-Item -Force -ErrorAction Ignore ./artifacts/linux-deb-zec-qt-wallet-v$version.deb
-Remove-Item -Force -ErrorAction Ignore ./artifacts/Windows-binaries-zec-qt-wallet-v$version.zip
-Remove-Item -Force -ErrorAction Ignore ./artifacts/Windows-installer-zec-qt-wallet-v$version.msi
-Remove-Item -Force -ErrorAction Ignore ./artifacts/macOS-zec-qt-wallet-v$version.dmg
+Remove-Item -Force -ErrorAction Ignore ./artifacts/linux-binaries-zclwallet-v$version.tar.gz
+Remove-Item -Force -ErrorAction Ignore ./artifacts/linux-deb-zclwallet-v$version.deb
+Remove-Item -Force -ErrorAction Ignore ./artifacts/Windows-binaries-zclwallet-v$version.zip
+Remove-Item -Force -ErrorAction Ignore ./artifacts/Windows-installer-zclwallet-v$version.msi
+Remove-Item -Force -ErrorAction Ignore ./artifacts/macOS-zclwallet-v$version.dmg
+Remove-Item -Force -ErrorAction Ignore ./artifacts/signatures-v$version.tar.gz
+
 
 Remove-Item -Recurse -Force -ErrorAction Ignore ./bin
 Remove-Item -Recurse -Force -ErrorAction Ignore ./debug
@@ -25,7 +27,7 @@ Write-Host ""
 
 
 Write-Host "[Building on Mac]"
-bash src/scripts/mkmacdmg.sh --qt_path ~/Qt/5.11.1/clang_64/ --version $version --zcash_path ~/github/zcash 
+bash src/scripts/mkmacdmg.sh --qt_path ~/Qt/5.11.1/clang_64/ --version $version --zclassic_path ~/github/zclassic 
 if (! $?) {
     Write-Output "[Error]"
     exit 1;
@@ -37,7 +39,7 @@ Write-Host "[Building Linux + Windows]"
 Write-Host -NoNewline "Copying files.........."
 ssh $server "rm -rf /tmp/zqwbuild"
 ssh $server "mkdir /tmp/zqwbuild"
-scp -r src/ res/ ./zec-qt-wallet.pro ./application.qrc ./LICENSE ./README.md ${server}:/tmp/zqwbuild/ | Out-Null
+scp -r src/ singleapplication/ res/ ./zcl-qt-wallet.pro ./application.qrc ./LICENSE ./README.md ${server}:/tmp/zqwbuild/ | Out-Null
 ssh $server "dos2unix -q /tmp/zqwbuild/src/scripts/mkrelease.sh" | Out-Null
 ssh $server "dos2unix -q /tmp/zqwbuild/src/version.h"
 Write-Host "[OK]"
@@ -84,11 +86,11 @@ Write-Host "[OK]"
 
 # Finally, test to make sure all files exist
 Write-Host -NoNewline "Checking Build........."
-if (! (Test-Path ./artifacts/linux-binaries-zec-qt-wallet-v$version.tar.gz) -or
-    ! (Test-Path ./artifacts/linux-deb-zec-qt-wallet-v$version.deb) -or
-    ! (Test-Path ./artifacts/Windows-binaries-zec-qt-wallet-v$version.zip) -or
-    ! (Test-Path ./artifacts/macOS-zec-qt-wallet-v$version.dmg) -or 
-    ! (Test-Path ./artifacts/Windows-installer-zec-qt-wallet-v$version.msi) ) {
+if (! (Test-Path ./artifacts/linux-binaries-zclwallet-v$version.tar.gz) -or
+    ! (Test-Path ./artifacts/linux-deb-zclwallet-v$version.deb) -or
+    ! (Test-Path ./artifacts/Windows-binaries-zclwallet-v$version.zip) -or
+    ! (Test-Path ./artifacts/macOS-zclwallet-v$version.dmg) -or 
+    ! (Test-Path ./artifacts/Windows-installer-zclwallet-v$version.msi) ) {
         Write-Host "[Error]"
         exit 1;
     }
